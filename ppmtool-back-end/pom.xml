@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.4.RELEASE</version>
+		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.masumbhuiyan</groupId>
 	<artifactId>ppmtool</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ppmtool</name>
+	<name>PPMTool</name>
 	<description>A personal project management tool.</description>
 
 	<properties>
@@ -59,6 +59,10 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 	</dependencies>
 
