@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import CreateProjectButton from './Project/CreateProjectButton';
 import ProjectItem from './Project/ProjectItem';
+import { connect } from 'react-redux';
+import { findAllProjects } from '../actions/projectActions';
+import PropTypes from 'prop-types';
 
 class Dashboard extends Component {
+    componentDidMount() {
+        this.props.findAllProjects();
+    }
     render() { 
+        const { projects } = this.props.project;
         return (  
             <div className="projects">
                 <div className="container">
@@ -14,7 +21,10 @@ class Dashboard extends Component {
                             <CreateProjectButton />
                             <br />
                             <hr />
-                            <ProjectItem />
+                            {
+                                projects.map((project, index) => (
+                                    <ProjectItem key={index} project={ project }/>
+                                ))}
                         </div>
                     </div>
                 </div>
@@ -23,4 +33,14 @@ class Dashboard extends Component {
     }
 }
  
-export default Dashboard;
+Dashboard.propTypes = {
+    project: PropTypes.object.isRequired,
+    projects: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+    project: state.project
+});
+export default connect(
+    mapStateToProps, 
+    {findAllProjects}
+) (Dashboard);
